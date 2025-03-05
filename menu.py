@@ -11,14 +11,13 @@ def get_menu_option():
   asking to input a new value.
   '''
   def jatekmod_valasztas():
-    print("\nPlease choose from the listed options: ")
-    print('\t1. Human vs Human \n \t2. Random AI vs Random AI \n \t3. Human vs Random AI\n \t4. Human vs Unbeatable AI')
-    jatekmod = input("Choose a gamemode (1-4): ")
-    return jatekmod
-  if jatekmod_valasztas() not in range(1, 5):
-    print('\n\nChoose a correct gamemode')
-    jatekmod_valasztas()
-    
+    while jatekmod_valasztas not in [1,2,3,4]:
+      print("\nPlease choose from the listed options: ")
+      print('\t1. Human vs Human \n \t2. Random AI vs Random AI \n \t3. Human vs Random AI\n \t4. Human vs Unbeatable AI')
+      jatekmod = input("Choose a gamemode (1-4): ")
+      return jatekmod
+
+
 
 """"
   # run this file to test you have implemented correctly the function
