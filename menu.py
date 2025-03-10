@@ -1,5 +1,4 @@
 def get_menu_option():
-  jatekmod = 0
   '''
   Should print a menu with the following options:
   print("1. Human vs Human")
@@ -11,16 +10,18 @@ def get_menu_option():
   If the user will enter invalid data (for example 5), than a message will appear
   asking to input a new value.
   '''
+  jatekmod = 0
+  print('\t1. Human vs Human \n\t2. Random AI vs Random AI \n\t3. Human vs Random AI\n\t4. Human vs Unbeatable AI')
+  
   while True:
-    if jatekmod == [1,2,3,4]:
-      break
-    else:
-      print("\nPlease choose from the listed options: ")
-      print('\t1. Human vs Human \n \t2. Random AI vs Random AI \n \t3. Human vs Random AI\n \t4. Human vs Unbeatable AI')
-      jatekmod = input("Choose a gamemode (1-4): ")
-
-
-
+      try:
+          jatekmod = int(input("Choose a gamemode (1-4): "))
+          if 1 <= jatekmod <= 4:
+              return jatekmod
+          else:
+              print("Invalid input. Please choose a number between 1 and 4.")
+      except ValueError:
+          print("Invalid input. Please enter a number between 1 and 4.")
 
 
 """"
@@ -30,4 +31,3 @@ def get_menu_option():
   print(option) """
 
 get_menu_option()
-
