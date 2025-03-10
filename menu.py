@@ -29,5 +29,3 @@ def get_menu_option():
   option = get_menu_option()
   print("If the user selected 1, it should print 1")
   print(option) """
-
-get_menu_option()
