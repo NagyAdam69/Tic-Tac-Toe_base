@@ -46,7 +46,8 @@ def get_winning_player(board):
   If no player has won, than "None" is returned.
   """
   for row in board:
-    if
+    if board[row][0] == "X" and board[row][1] == "X" and board[row][2] == "X":
+      return
   pass
 
 
