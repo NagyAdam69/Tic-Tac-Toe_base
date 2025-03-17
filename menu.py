@@ -21,7 +21,7 @@ def get_menu_option():
           else:
               print("Invalid input. Please choose a number between 1 and 4.")
       except ValueError:
-          print("Invalid input. Please enter a number between 1 and 4.")
+          print("Invalid input. Please enter a number between 1 and 4!")
 
 
 """"
@@ -29,3 +29,4 @@ def get_menu_option():
   option = get_menu_option()
   print("If the user selected 1, it should print 1")
   print(option) """
+

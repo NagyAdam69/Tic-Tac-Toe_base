@@ -18,8 +18,13 @@ def display_board(board):
     C   0 | X | . 
        --+---+---
   """
-  print("")
-  pass
+  print("   1   2   3")
+  print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
+  print("   ---+---+---") 
+  print(f"B   {board[1][0]} | {board[1][1]} | {board[1][2]}")
+  print("   ---+---+---")
+  print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
+  print("   ---+---+---")
 
 
 def is_board_full(board):
@@ -27,7 +32,12 @@ def is_board_full(board):
   should return True if there are no more empty place on the board,
   otherwise should return False
   """
-  pass
+  for row in board:
+    for cell in row:
+      if cell == ".":
+        return False
+      else:
+        return True
 
 
 def get_winning_player(board):
@@ -35,6 +45,8 @@ def get_winning_player(board):
   Should return the player that wins based on the tic tac toe rules.
   If no player has won, than "None" is returned.
   """
+  for row in board:
+    if
   pass
 
 
