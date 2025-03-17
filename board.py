@@ -47,8 +47,17 @@ def get_winning_player(board):
   """
   for row in board:
     if board[row][0] == "X" and board[row][1] == "X" and board[row][2] == "X":
-      return
-  pass
+      return "X"
+    elif board[row][0] == "O" and board[row][1] == "O" and board[row][2] == "O":
+      return "O"
+    else:
+      return None
+  for column in board:
+    if board[0][column] == "X" and board[1][column] == "X" and board[2][column] == "X":
+      return "X"
+    elif board[0][column] == "O" and board[1][column] == "O" and board[2][column] == "O":
+      return "O"
+  
 
 
 # run this file to test whether you have correctly implemented the functions

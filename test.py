@@ -1,19 +1,24 @@
 board = [
     [".", ".", "."],
     [".", ".", "."],
-    [".", ".", "."],
-    [".", ".", "."], 
+    [".", ".", "."]
     ]
 
 while True:
     valasz = input('Valasz egy mezot (a1, a2, stb)')
 
     match valasz:
-        case "a1":
-            board[0][0] = 'X'
+        case "a1"  :
+            if board[0][0] == 'X':
+                raise ValueError('This has been chosen before, choose again')
+            else:
+                board[0][0] = 'X'
 
         case "a2":
-            board[0][1] = 'X'
+            if board[0][1] == 'X':
+                raise ValueError('This has been chosen before, choose again')
+            else:
+                board[0][1] = 'X'
 
         case "a3":
             board[0][2] = 'X'
@@ -35,7 +40,7 @@ while True:
 
         case "c3":
             board[2][2] = 'X'
-
+            
     print("   1   2   3")
     print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
     print("   ---+---+---") 
@@ -44,3 +49,24 @@ while True:
     print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
     print("   ---+---+---")
     valasz = None
+
+
+    for row in board:
+        if row[0] == "X" and row[1] == "X" and row[2] == "X":
+            print("Winner is X")
+            exit()
+        elif row[0] == "O" and row[1] == "O" and row[2] == "O":
+            print("Winner is O")
+            exit()
+            
+    for i in board:
+        column = 0
+        if board[0][column] == "X" and board[1][column] == "X" and board[2][column] == "X":
+            print("Winner is X")
+            exit()
+        elif board[0][column] == "O" and board[1][column] == "O" and board[2][column] == "O":
+            print("Winner is O")
+            exit()
+        column += 1
+
+
