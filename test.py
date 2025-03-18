@@ -52,11 +52,8 @@ while True:
 
 
     for row in board:
-        if row[0] == "X" and row[1] == "X" and row[2] == "X":
-            print("Winner is X")
-            exit()
-        elif row[0] == "O" and row[1] == "O" and row[2] == "O":
-            print("Winner is O")
+        if row[0] ==  row[1] ==  row[2] :
+            print(f"Winner is {row[1]}")
             exit()
             
     for i in board:
