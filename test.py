@@ -45,8 +45,15 @@ def human_vs_human():
                 print(' ' * 11 + f'The winner is the {board[1][1]}!' + ' ' * 11)
                 print("-" * 43)
                 print()
+
+            if "." not in board[0] and "." not in board[1] and "." not in board[2]:
+                print("-" * 43)
+                print(' ' * 15 + f'It is a tie!')
+                print("-" * 43)
+                print()
+                exit()
             
-            valasz = input('Choose a spot (a1, a2, etc.): ')
+            valasz = input('Choose a spot for "X" (a1, a2, etc.): ')
             
             match valasz:
                 case "a1":
@@ -134,7 +141,7 @@ def human_vs_human():
                 case _:
                         print()
                         print('-' * 43)
-                        print('Invalid input, please write something, like "a1" or "c2"')
+                        print(' ' * 9 + 'Invalid input! Try again!')
                         print('-' * 43)
 
         # O player
@@ -164,8 +171,15 @@ def human_vs_human():
                 print(' ' * 11 + f'The winner is the {board[1][1]}!' + ' ' * 11)
                 print("-" * 43)
                 print()
+
+            if "." not in board[0] and "." not in board[1] and "." not in board[2]:
+                print("-" * 43)
+                print(' ' * 15 + f'It is a tie!')
+                print("-" * 43)
+                print()
+                exit()
             
-            valasz = input('Choose a spot (a1, a2, etc.): ')
+            valasz = input('Choose a spot for "O" (a1, a2, etc.): ')
             
             match valasz:
                 case "a1":
@@ -265,7 +279,7 @@ while True:
         human_vs_human()
 
     elif gamemode == "2":
-        print("Sadly, this feature hasn't been developed yet.")
+        print("\nSadly, this gamemode hasn't been developed yet.")
 
     else:
-        print("Please choose from the available options.")
+        print("\nPlease choose from the available options.")
