@@ -1,132 +1,55 @@
-def get_empty_board():
-    board = [
+board = [
       [".", ".", "."],
       [".", ".", "."],
-      [".", ".", "."],
-    ]
-    pass
+      [".", ".", "."]
+      ]
 
+def display_board():
+        
+        # board visualisation
+        print("\n   1   2   3")
+        print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
+        print("   ---+---+---") 
+        print(f"B   {board[1][0]} | {board[1][1]} | {board[1][2]}")
+        print("   ---+---+---")
+        print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
+        print("   ---+---+---\n")
+        valasz = None
 
-def display_board(board):
-  """
-  Should print the tic tac toe board in a format similar to
-       1   2   3
-    A   X | O | . 
-       ---+---+---
-    B   X | O | .
-       --+---+---
-    C   0 | X | . 
-       --+---+---
-  """
-  print("   1   2   3")
-  print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
-  print("   ---+---+---") 
-  print(f"B   {board[1][0]} | {board[1][1]} | {board[1][2]}")
-  print("   ---+---+---")
-  print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
-  print("   ---+---+---")
+def check_for_winner():
+    # horizontal winning condition
+    for row in board:
+        if row[0] ==  row[1] ==  row[2] != "." :
+            display_board()
+            print("-" * 43)
+            print(' ' * 11 + f'The winner is the {row[1]}!')
+            print("-" * 43)
+            print()
+            exit()
 
-
-def is_board_full(board):
-  """
-  should return True if there are no more empty place on the board,
-  otherwise should return False
-  """
-  for row in board:
-    for cell in row:
-      if cell == ".":
-        return False
-      else:
-        return True
-
-
-def get_winning_player(board):
-  """
-  Should return the player that wins based on the tic tac toe rules.
-  If no player has won, than "None" is returned.
-  """
-  for row in board:
-    if board[row][0] == "X" and board[row][1] == "X" and board[row][2] == "X":
-      return "X"
-    elif board[row][0] == "O" and board[row][1] == "O" and board[row][2] == "O":
-      return "O"
-    else:
-      return None
-  for column in board:
-    if board[0][column] == "X" and board[1][column] == "X" and board[2][column] == "X":
-      return "X"
-    elif board[0][column] == "O" and board[1][column] == "O" and board[2][column] == "O":
-      return "O"
-  
-
-
-# run this file to test whether you have correctly implemented the functions
-if __name__ == "__main__":
-    empty_board = get_empty_board()
-    print(empty_board)
-
-    board = [
-      ['X', "O", "."],
-      ['X', "O", "."]
-      ['0', "X", "."]
-    ]
-    print("""
-    should print 
-        1   2   3
-    A   X | O | . 
-       ---+---+---
-    B   X | O | .
-       ---+---+---
-    C   0 | X | . 
-       ---+---+---
-    """)
+    # vertical winning condition        
+    for col in range(3):
+        if board[0][col] ==  board[1][col] == board[2][col] != "." :
+            display_board()
+            print("-" * 43)
+            print(' ' * 11 + f'The winner is the {board[0][col]}!')
+            print("-" * 43)
+            print()
+            exit()
     
-    display_board(board)
-    
-    board_1 = [
-      ["X", "O", "."],
-      ["X", "O", "."],
-      ["X", "X", "O"],
-    ]
-    print("Should return False")
-    print(is_board_full(board_1)) 
+    # diagonal winning condition
+    if board[0][0] ==  board[1][1] == board[2][2] != "." or board[0][2] ==  board[1][1] == board[2][0] != ".":
+        display_board()
+        print("-" * 43)
+        print(' ' * 11 + f'The winner is the {board[1][1]}!')
+        print("-" * 43)
+        print()
+        exit()
 
-    board_2 = [
-      [".", "O", "O"],
-      [".", "O", "X"],
-      [".", "X", "X"],
-    ]
-    print("Should return False")
-    print(is_board_full(board_2)) 
-
-    board_3 = [
-      ["O", "O", "X"],
-      ["O", "X", "O"],
-      ["O", "X", "X"],
-    ]
-    print("Should return True")
-    print(is_board_full(board_3)) 
-
-    board_4 = [
-      ["X", "O", "."],
-      ["X", "O", "."],
-      ["X", "X", "O"],
-    ]
-    print("Should return X")
-    print(get_winning_player(board_4))
-
-    board_5 = [
-      ["X", "O", "O"],
-      ["X", "O", "."],
-      ["O", "X", "X"],
-    ]
-    print("Should return O")
-    print(get_winning_player(board_5))
-
-    board_6 = [
-      ["O", "O", "."],
-      ["O", "X", "."],
-      [".", "X", "."],
-    ]
-    print("Should return None")
-    print(get_winning_player(board_6))
+    if "." not in board[0] and "." not in board[1] and "." not in board[2]:
+        display_board()
+        print("-" * 43)
+        print(' ' * 15 + f'It is a tie!')
+        print("-" * 43)
+        print()
+        exit()
