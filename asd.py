@@ -1,45 +1,78 @@
+current_user = None
+
+def regisztracio():
+    while True:
+        felhasz = input("Felhasználó: ")
+
+        fontos = []
+        with open("felhasznalok.txt", "r", encoding="utf-8") as forrasfajl:
+            for sor in forrasfajl:
+                adatok = sor.strip().split(";")
+                felhasznalo = adatok[0]
+                jelszo_file = adatok[1]
+                pontszam = adatok[2]
+                fontos.append((felhasznalo, jelszo_file, pontszam))
+
+        found = False
+        for felhasznalo, jelszo_file, pontszam in fontos:
+            if felhasznalo == felhasz:
+                found = True
+                print("A felhasználó létezik!")
+                return  # Kilépés a regisztrációs folyamatból
+
+        if not found:
+            jelszo = input("Jelszó: ")
+            try:
+                with open("felhasznalok.txt", "a", encoding="utf-8") as forrasfajl:
+                    forrasfajl.write(f"{felhasz};{jelszo};0\n")
+                    forrasfajl.flush()  # Az adatok azonnali kiírása
+                print("Sikeres regisztráció! Az adatok elmentve.")
+                
+            except Exception as e:
+                print(f"Hiba történt az írás során: {e}")  # Hiba esetén üzenet
+            return  # Kilépés a regisztrációs folyamatból
+
 def bejelentkezes():
     while True:
-        while True:
-            felhasz = ""
-            felhasz = input("Felhasználónév: ")
+        felhasz = input("Felhasználónév: ")
 
-            fontos = []
-            with open("felhasznalok.txt", "r", encoding="utf-8") as forrasfajl:
-                for sor in forrasfajl:
-                    adatok = sor.strip().split(";")
-                    felhasznalo = adatok[0]
-                    jelszo_file = adatok[1]
-                    pontszam = adatok[2]
-                    fontos.append((felhasznalo, jelszo_file, pontszam))
+        fontos = []
+        with open("felhasznalok.txt", "r", encoding="utf-8") as forrasfajl:
+            for sor in forrasfajl:
+                adatok = sor.strip().split(";")
+                felhasznalo = adatok[0]
+                jelszo_file = adatok[1]
+                pontszam = adatok[2]
+                fontos.append((felhasznalo, jelszo_file, pontszam))
 
-            found = False
-            for felhasznalo, jelszo_fasdile, pontszam in fontos:
-                if felhasznalo == felhasz:
-                    found = True
-                    jelszo = input("Jelszó: ")
-                    if jelszo == jelszo_file:
-                        print(f"Sikeres bejelentkezés! Pontszám: {pontszam}")
-                        exit()
-                    else:
-                        print("Hibás jelszó!")
-                        break
-                    break
-
-            if not found:
-                print("A felhasználó nem létezik!")
+        found = False
+        for felhasznalo, jelszo_file, pontszam in fontos:
+            if felhasznalo == felhasz:
+                found = True
+                jelszo = input("Jelszó: ")
+                if jelszo == jelszo_file:
+                    print(f"Sikeres bejelentkezés! Pontszám: {pontszam}")
+                    current_user = felhasznalo
+                    return  # Kilépés a bejelentkezési folyamatból
+                else:
+                    print("Hibás jelszó!")
                 break
-while True:
-    while True:
-        sign_or_log = input("1. Bejelentkezés\n2. Regisztráció\n(1 vagy 2): ")
 
-        if sign_or_log == "1":
-            bejelentkezes() 
-            exit()
-
-        elif sign_or_log == "2":
-            regisztracio()
-            exit()
-        else:
-            print("Hibás bejelentkezés!")
+        if not found:
+            print("A felhasználó nem létezik!")
             break
+
+
+while True:
+    sign_or_log = input("1. Bejelentkezés\n2. Regisztráció\n(1 vagy 2): ")
+
+    if sign_or_log == "1":
+        bejelentkezes()
+        exit()
+
+    elif sign_or_log == "2":
+        regisztracio()
+        exit()
+
+    else:
+        print("Hibás választás!")

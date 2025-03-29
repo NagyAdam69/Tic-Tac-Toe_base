@@ -1,8 +1,4 @@
-import random
-from board import display_board
-from board import check_for_winner
 from vs_human import vs_human
-from board import board
 from vs_ai import vs_ai
 
 while True:
