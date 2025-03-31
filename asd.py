@@ -18,19 +18,19 @@ def regisztracio():
             if felhasznalo == felhasz:
                 found = True
                 print("A felhasználó létezik!")
-                return  # Kilépés a regisztrációs folyamatból
+                return 
 
         if not found:
             jelszo = input("Jelszó: ")
             try:
                 with open("felhasznalok.txt", "a", encoding="utf-8") as forrasfajl:
                     forrasfajl.write(f"{felhasz};{jelszo};0\n")
-                    forrasfajl.flush()  # Az adatok azonnali kiírása
+                    forrasfajl.flush()
                 print("Sikeres regisztráció! Az adatok elmentve.")
                 
             except Exception as e:
-                print(f"Hiba történt az írás során: {e}")  # Hiba esetén üzenet
-            return  # Kilépés a regisztrációs folyamatból
+                print(f"Hiba történt az írás során: {e}")
+            return 
 
 def bejelentkezes():
     while True:
@@ -53,7 +53,7 @@ def bejelentkezes():
                 if jelszo == jelszo_file:
                     print(f"Sikeres bejelentkezés! Pontszám: {pontszam}")
                     current_user = felhasznalo
-                    return  # Kilépés a bejelentkezési folyamatból
+                    return
                 else:
                     print("Hibás jelszó!")
                 break

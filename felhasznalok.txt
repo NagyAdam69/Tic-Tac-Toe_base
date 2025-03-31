@@ -1,2 +1,3 @@
 dani;tesztszo;99999999999
 NagyAdam;123412;0
+Bulcsu;123456;0
