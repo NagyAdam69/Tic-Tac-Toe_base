@@ -23,9 +23,9 @@ def vs_ai():
 
                 if len(ai_moves) != len(player_moves):
                     
-                    # check if can win
+                    
 
-                    # horizontal
+                    
                     if "a1" in all_possible_moves and "a2" in ai_moves and "a3" in ai_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")
@@ -68,7 +68,7 @@ def vs_ai():
 
 
 
-                    # vertical
+                    
                     elif "a1" in all_possible_moves and "b1" in ai_moves and "c1" in ai_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")
@@ -111,7 +111,7 @@ def vs_ai():
 
 
 
-                    # diagonal
+                    
                     elif "a1" in all_possible_moves and "b2" in ai_moves and "c3" in ai_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")
@@ -139,11 +139,10 @@ def vs_ai():
                         move_done = True
 
                     check_for_winner()
+                  
 
-                    # check if player can win
 
-
-                    # horizontal
+                    
                     if "a1" in all_possible_moves and "a2" in player_moves and "a3" in player_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")
@@ -195,7 +194,6 @@ def vs_ai():
 
 
 
-                    # vertical
                     elif "a1" in all_possible_moves and "b1" in player_moves and "c1" in player_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")
@@ -247,7 +245,6 @@ def vs_ai():
 
 
 
-                    # diagonal
                     elif "a1" in all_possible_moves and "b2" in player_moves and "c3" in player_moves:
                         board[0][0] = "O"
                         all_possible_moves.remove("a1")

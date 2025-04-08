@@ -22,7 +22,7 @@ def regisztracio():
             if felhasznalo == felhasz:
                 found = True
                 print("A felhasználó létezik!")
-                return  # Kilépés a regisztrációs folyamatból
+                return
 
         if not found:
             jelszo = input("Jelszó: ")
