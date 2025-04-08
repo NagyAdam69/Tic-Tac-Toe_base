@@ -1,3 +1,4 @@
-from asd import current_user
+from sign_in import sign_or_log, get_current_user
 
-print(current_user)
+sign_or_log()
+print(f'current user:{get_current_user()}')

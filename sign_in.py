@@ -1,5 +1,9 @@
 current_user = None
 
+def get_current_user():
+    global current_user
+    return current_user
+
 def regisztracio():
     while True:
         felhasz = input("Felhasználó: ")
@@ -33,6 +37,7 @@ def regisztracio():
             return 
 
 def bejelentkezes():
+    global current_user
     while True:
         felhasz = input("Felhasználónév: ")
 
@@ -51,28 +56,31 @@ def bejelentkezes():
                 found = True
                 jelszo = input("Jelszó: ")
                 if jelszo == jelszo_file:
+                    current_user = felhasz
                     print(f"Sikeres bejelentkezés! Pontszám: {pontszam}")
-                    current_user = felhasznalo
-                    return
+                    return True
                 else:
                     print("Hibás jelszó!")
-                break
+                pass
 
         if not found:
             print("A felhasználó nem létezik!")
-            break
+            pass
 
+def sign_or_log():
+    jo = True
 
-while True:
-    sign_or_log = input("1. Bejelentkezés\n2. Regisztráció\n(1 vagy 2): ")
+    while jo:
+        sign_or_log = input("1. Bejelentkezés\n2. Regisztráció\n(1 vagy 2): ")
 
-    if sign_or_log == "1":
-        bejelentkezes()
-        exit()
+        if sign_or_log == "1":
+            bejelentkezes()
+            jo = False
 
-    elif sign_or_log == "2":
-        regisztracio()
-        exit()
+        elif sign_or_log == "2":
+            regisztracio()
+            jo = False
 
-    else:
-        print("Hibás választás!")
+        else:
+            print("Hibás választás!")
+
