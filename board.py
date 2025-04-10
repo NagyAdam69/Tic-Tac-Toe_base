@@ -3,6 +3,7 @@ board = [
       [".", ".", "."],
       [".", ".", "."]
       ]
+winner = None
 
 def display_board():
         
@@ -20,6 +21,11 @@ def check_for_winner():
 
     for row in board:
         if row[0] ==  row[1] ==  row[2] != "." :
+            if row[1] == "x":
+                winner = row[1]
+            else:
+                continue
+
             display_board()
             print("-" * 43)
             print(' ' * 11 + f'The winner is the {row[1]}!')
@@ -30,6 +36,11 @@ def check_for_winner():
         
     for col in range(3):
         if board[0][col] ==  board[1][col] == board[2][col] != "." :
+            if board[0][col] == "x":
+                winner = board[0][col]
+            else:
+                continue
+            
             display_board()
             print("-" * 43)
             print(' ' * 11 + f'The winner is the {board[0][col]}!')
@@ -39,6 +50,10 @@ def check_for_winner():
     
 
     if board[0][0] ==  board[1][1] == board[2][2] != "." or board[0][2] ==  board[1][1] == board[2][0] != ".":
+        if board[1][1] == "x":
+                winner = board[1][1]
+            else:
+                continue
         display_board()
         print("-" * 43)
         print(' ' * 11 + f'The winner is the {board[1][1]}!')

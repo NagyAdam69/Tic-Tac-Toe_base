@@ -21,7 +21,7 @@ def regisztracio():
         for felhasznalo, jelszo_file, pontszam in fontos:
             if felhasznalo == felhasz:
                 found = True
-                print("A felhasználó létezik!")
+                print("A felhasználó létezik!\n")
                 return
 
         if not found:
@@ -30,7 +30,7 @@ def regisztracio():
                 with open("felhasznalok.txt", "a", encoding="utf-8") as forrasfajl:
                     forrasfajl.write(f"{felhasz};{jelszo};0\n")
                     forrasfajl.flush()
-                print("Sikeres regisztráció! Az adatok elmentve.")
+                print("\nSikeres regisztráció! Az adatok elmentve.")
                 
             except Exception as e:
                 print(f"Hiba történt az írás során: {e}")
@@ -57,10 +57,10 @@ def bejelentkezes():
                 jelszo = input("Jelszó: ")
                 if jelszo == jelszo_file:
                     current_user = felhasz
-                    print(f"Sikeres bejelentkezés! Pontszám: {pontszam}")
+                    print(f"\nSikeres bejelentkezés! Pontszám: {pontszam}")
                     return True
                 else:
-                    print("Hibás jelszó!")
+                    print("\nHibás jelszó!\n")
                 pass
 
         if not found:
