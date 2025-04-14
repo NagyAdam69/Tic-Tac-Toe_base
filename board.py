@@ -4,18 +4,19 @@ board = [
       [".", ".", "."]
       ]
 winner = None
+from sign_in import sign_or_log, get_current_user
 
 def display_board():
+    print(f'\n\ncurrent user:{get_current_user()}')        
         
-        
-        print("\n   1   2   3")
-        print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
-        print("   ---+---+---") 
-        print(f"B   {board[1][0]} | {board[1][1]} | {board[1][2]}")
-        print("   ---+---+---")
-        print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
-        print("   ---+---+---\n")
-        valasz = None
+    print("\n   1   2   3")
+    print(f"A   {board[0][0]} | {board[0][1]} | {board[0][2]}")
+    print("   ---+---+---") 
+    print(f"B   {board[1][0]} | {board[1][1]} | {board[1][2]}")
+    print("   ---+---+---")
+    print(f"C   {board[2][0]} | {board[2][1]} | {board[2][2]}")
+    print("   ---+---+---\n")
+    valasz = None
 
 def check_for_winner():
 
@@ -48,7 +49,7 @@ def check_for_winner():
     if board[0][0] ==  board[1][1] == board[2][2] != "." or board[0][2] ==  board[1][1] == board[2][0] != ".":
         if board[1][1] == "x":
             winner = board[1][1]
-            
+
         display_board()
         print("-" * 43)
         print(' ' * 11 + f'The winner is the {board[1][1]}!')
