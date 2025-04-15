@@ -18,38 +18,50 @@ def display_board():
     print("   ---+---+---\n")
     valasz = None
 
+def update_user_points():
+    current_user = get_current_user()
+    if current_user:
+        with open("felhasznalok.txt", "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        
+        with open("felhasznalok.txt", "w", encoding="utf-8") as f:
+            for line in lines:
+                user, password, points = line.strip().split(";")
+                if user == current_user:
+                    points = str(int(points) + 1)
+                f.write(f"{user};{password};{points}\n")
+
 def check_for_winner():
+    global winner
 
     for row in board:
-        if row[0] ==  row[1] ==  row[2] != "." :
-            if row[1] == "x":
-                winner = row[1]
-
+        if row[0] == row[1] == row[2] != ".":
+            if row[0] == "x":
+                winner = row[0]
+                update_user_points() 
             display_board()
             print("-" * 43)
-            print(' ' * 11 + f'The winner is the {row[1]}!')
+            print(' ' * 11 + f'The winner is the {row[0]}!')
             print("-" * 43)
             print()
             exit()
 
-        
     for col in range(3):
-        if board[0][col] ==  board[1][col] == board[2][col] != "." :
+        if board[0][col] == board[1][col] == board[2][col] != ".":
             if board[0][col] == "x":
                 winner = board[0][col]
-
+                update_user_points() 
             display_board()
             print("-" * 43)
             print(' ' * 11 + f'The winner is the {board[0][col]}!')
             print("-" * 43)
             print()
             exit()
-    
 
-    if board[0][0] ==  board[1][1] == board[2][2] != "." or board[0][2] ==  board[1][1] == board[2][0] != ".":
+    if board[0][0] == board[1][1] == board[2][2] != "." or board[0][2] == board[1][1] == board[2][0] != ".":
         if board[1][1] == "x":
             winner = board[1][1]
-
+            update_user_points() 
         display_board()
         print("-" * 43)
         print(' ' * 11 + f'The winner is the {board[1][1]}!')
