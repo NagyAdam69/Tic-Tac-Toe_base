@@ -33,12 +33,12 @@ def update_user_points():
 
 def check_for_winner():
     global winner
-
+    
     for row in board:
         if row[0] == row[1] == row[2] != ".":
-            if row[0] == "x":
-                winner = row[0]
-                update_user_points() 
+            winner = row[0].lower()  # Convert to lowercase for consistency
+            if winner == "x":
+                update_user_points()
             display_board()
             print("-" * 43)
             print(' ' * 11 + f'The winner is the {row[0]}!')
@@ -48,9 +48,9 @@ def check_for_winner():
 
     for col in range(3):
         if board[0][col] == board[1][col] == board[2][col] != ".":
-            if board[0][col] == "x":
-                winner = board[0][col]
-                update_user_points() 
+            winner = board[0][col].lower()  # Convert to lowercase for consistency
+            if winner == "x":
+                update_user_points()
             display_board()
             print("-" * 43)
             print(' ' * 11 + f'The winner is the {board[0][col]}!')
@@ -59,9 +59,9 @@ def check_for_winner():
             exit()
 
     if board[0][0] == board[1][1] == board[2][2] != "." or board[0][2] == board[1][1] == board[2][0] != ".":
-        if board[1][1] == "x":
-            winner = board[1][1]
-            update_user_points() 
+        winner = board[1][1].lower()  # Convert to lowercase for consistency
+        if winner == "x":
+            update_user_points()
         display_board()
         print("-" * 43)
         print(' ' * 11 + f'The winner is the {board[1][1]}!')
