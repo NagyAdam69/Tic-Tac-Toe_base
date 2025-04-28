@@ -27,7 +27,7 @@ sign_or_log()
 while True:
     board = [["." for _ in range(3)] for _ in range(3)]
     
-    gamemode = input("\nChoose a gamemode!\n1: Human vs. Human\n2: Human vs. AI\n3: Human vs. AI (UNBEATABLE)\n(1 or 2 or 3):")
+    gamemode = input("\nChoose a gamemode!\n1: Human vs. Human\n2: Human vs. AI\n(1 or 2):")
 
     if gamemode == "1":
         vs_human()
@@ -36,10 +36,6 @@ while True:
         vs_ai()
         if winner == "x":
             update_points()
-
-    elif gamemode == "3":
-        print()
-
 
     else:
         print("\nPlease choose from the available options.")
