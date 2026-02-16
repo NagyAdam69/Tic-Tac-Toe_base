@@ -26,7 +26,6 @@ sign_or_log()
 
 while True:
     board = [["." for _ in range(3)] for _ in range(3)]
-    
     gamemode = input("\nChoose a gamemode!\n1: Human vs. Human\n2: Human vs. AI\n(1 or 2):")
 
     if gamemode == "1":
